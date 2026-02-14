@@ -59,7 +59,10 @@ export default function Home() {
   const sendMessage = async () => {
     if (!input || !ego) return;
 
-    const newMessages = [...messages, { role: "user", content: input }];
+    const newMessages: { role: "user" | "assistant"; content: string }[] = [
+  ...messages,
+  { role: "user" as "user", content: input },
+];
     setMessages(newMessages);
     setInput("");
     setLoading(true);
